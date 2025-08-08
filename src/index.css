@@ -1,0 +1,532 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+   
+    --pad-x: clamp(40px, 8vw, 160px);
+    --lejhro-orange: 31 92% 56%;
+    --lejhro-orange-dark: 31 92% 46%;
+    --lejhro-orange-light: 31 92% 66%;
+    --lejhro-custom: 31 92% 56%;
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-900;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  ::selection {
+    background: #1890ff;
+    color: #fff;
+  }
+}
+
+@layer components {
+ 
+  .bg-lejhro-custom,
+  .bg-lejhro-vibrant {
+    background-color: hsl(var(--lejhro-orange));
+  }
+  
+
+  .side-drawer-button-line {
+    width: clamp(16px, 2vw, 20px);
+    height: clamp(2px, 0.3vw, 2.5px);
+    background-color: #3a3632;
+    margin: clamp(2px, 0.3vw, 3px) 0;
+    transition: all 0.3s ease;
+    align-self: flex-end;
+  }
+  
+  .side-drawer-button-line.short {
+    width: clamp(10px, 1.5vw, 12px);
+  }
+  
+ 
+  .top-header-drawer-button .side-drawer-button-line,
+  .top-header-drawer-button-links .side-drawer-button-line {
+    background-color: #3a3632;
+  }
+
+  
+  .scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1001;
+    background-color: white;
+    color: #2c7fbf;
+    border: none;
+    border-radius: 50%;
+    width: clamp(36px, 4vw, 44px);
+    height: clamp(36px, 4vw, 44px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .scroll-to-top:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-2px);
+  }
+  
+  .top-fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: white;
+    
+    padding: 0.75rem var(--pad-x);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-100%);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .top-fixed-header.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  .top-fixed-header-logo {
+    height: clamp(24px, 2vw, 28px);
+    width: auto;
+  }
+  
+  .top-fixed-header .ant-btn {
+    background: #252525;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    border-radius: 50%;
+    width: clamp(32px, 4vw, 40px);
+    height: clamp(32px, 4vw, 40px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .top-fixed-header .ant-btn:hover {
+    background-color: #111111;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .top-fixed-header-container {
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 2vw, 20px);
+  }
+  
+  .top-fixed-header-contact-div {
+    display: flex;
+    align-items: center;
+  }
+  
+  .top-fixed-header-contact-div a {
+    color: #2c7fbf;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: clamp(6px, 1vw, 8px);
+    font-size: clamp(14px, 1.5vw, 18px);
+    font-weight: 600;
+    transition: color 0.2s ease;
+  }
+  
+  .top-fixed-header-contact-div svg {
+    width: clamp(18px, 2vw, 22px);
+    height: clamp(18px, 2vw, 22px);
+    fill: #2c7fbf;
+  }
+  
+  
+  .top-fixed-header .side-drawer-button-line {
+    background-color: #ffffff;
+  }
+
+  
+  .home-page-home {
+    background-color: #d69326;
+    /* Use the global padding variable for alignment */
+    padding: 3rem var(--pad-x);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 40vh; 
+  }
+  
+  .top-header-header-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  
+  .top-header-logo {
+    height: clamp(26px, 2.5vw, 32px);
+    width: auto;
+  }
+  
+  .top-header-links-div {
+    display: none;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  
+  .top-header-links-div a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .top-header-links-div a:hover {
+    color: #fbbf24;
+  }
+  
+  
+  .top-header-drawer-button {
+    background: white;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    border-radius: 50%;
+    width: clamp(32px, 4vw, 40px);
+    height: clamp(32px, 4vw, 40px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  
+  .top-header-drawer-button-links {
+    background: white;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    border-radius: 50%;
+    width: clamp(32px, 4vw, 40px);
+    height: clamp(32px, 4vw, 40px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  .home-page-name.h2-heading {
+    color: #FDFDFD;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 600;
+    margin: 0;
+    padding: 1rem 0;
+  }
+
+  
+  @media (min-width: 768px) {
+    .top-header-links-div {
+      display: flex;
+    }
+    .top-header-drawer-button {
+      display: none;
+    }
+  }
+
+ 
+  .blog-content {
+    background-color: #f4f4f4;
+    width: 100%;
+    padding: 3rem var(--pad-x);
+  }
+  
+  .blog-content-container {
+    background-color: #fdfdfd;
+    border-radius: 30px;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+
+  .blog-content-container h1,
+  .blog-content-container h2 {
+    font-size: clamp(1.75rem, 5vw, 2.25rem);
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+  
+  .blog-content-container img {
+    width: 100%;
+    height: auto;
+    margin: 2rem 0;
+    border-radius: 8px; 
+  }
+
+  .blog-content-container .p-bold {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #1a1a1a;
+    margin: 1.5rem 0 0.5rem 0;
+    line-height: 1.4;
+  }
+
+  .blog-content-container p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #333333;
+    margin-bottom: 1.25rem;
+    text-align: justify;
+  }
+
+  .blog-content-container p a {
+    color: #1890FF;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+ 
+  #lejhro-footer {
+    background: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    margin-top: 3rem;
+  }
+  
+  #lejhro-footer .footer-header {
+    height: 9px;
+    background: #2c7fbf;
+  }
+  
+  #lejhro-footer .footer-body {
+    
+    padding: 3rem var(--pad-x);
+  }
+  
+  #lejhro-footer .footer-body-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); 
+    gap: 2.5rem;
+  }
+  
+  #lejhro-footer .footer-section h3 {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 900;
+    margin-bottom: 1rem;
+    color: #111827;
+  }
+  
+  #lejhro-footer .footer-section a {
+    display: block;
+    color: #374151;
+    text-decoration: none;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    transition: color .2s ease;
+  }
+  
+  #lejhro-footer .footer-section a:hover {
+    color: #111827;
+  }
+  
+  #lejhro-footer .footer-section-connect {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  #lejhro-footer .footer-section-connect a {
+    color: #374151;
+    transition: color .2s ease, transform .2s ease;
+  }
+
+  #lejhro-footer .footer-section-connect a:hover {
+    transform: translateY(-2px);
+    color: #2c7fbf; 
+  }
+
+  #lejhro-footer .footer-section-connect svg {
+    width: clamp(18px, 2vw, 22px);
+    height: clamp(18px, 2vw, 22px);
+    fill: currentColor;
+  }
+
+  #lejhro-footer .footer-copyright {
+    text-align: center;
+    color: #4b5563;
+    font-size: 0.875rem;
+    padding: 1.5rem var(--pad-x);
+    border-top: 1px solid #e5e7eb;
+    margin-top: 2rem;
+  }
+
+  
+  @media (min-width: 640px) {
+    #lejhro-footer .footer-body-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    #lejhro-footer .footer-body-container {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    #lejhro-footer .footer-copyright {
+      margin-top: 0;
+    }
+  }
+}
+
+
+.ant-drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.45);
+  z-index: 1002;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ant-drawer {
+  position: relative;
+  width: clamp(280px, 25vw, 380px);
+  height: 100%;
+  background: white;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+}
+
+.ant-drawer-header {
+  padding: 16px 24px;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ant-drawer-header-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  flex-direction: row-reverse;
+}
+
+.ant-drawer-close {
+  background: white;
+  border: clamp(0.10rem, 0.2vw, 0.1rem) solid #111;
+  cursor: pointer;
+  padding: clamp(0.4rem, 1vw, 0.5rem);
+  border-radius: 50%;
+  width: clamp(1.8rem, 3vw, 2.2rem);
+  height: clamp(1.8rem, 3vw, 2.2rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.ant-drawer-close:hover {
+  background-color: #f5f5f5;
+}
+
+.ant-drawer-close svg {
+  width: clamp(0.8rem, 1.5vw, 1rem);
+  height: clamp(0.8rem, 1.5vw, 1rem);
+  fill: #111;
+}
+
+.ant-drawer-title {
+  flex: 1;
+  text-align: center;
+}
+
+.lejhro-logo-primary {
+  height: 32px;
+  width: auto;
+}
+
+.ant-drawer-body {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.side-drawer-buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.4rem, 1vw, 0.7rem);
+}
+
+  .side-drawer-button-link {
+    color: #333;
+    text-decoration: none;
+    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    font-weight: 700;
+    font-family: sans-serif;
+    padding: clamp(0.4rem, 0.8vw, 0.6rem) 0;
+    transition: color 0.2s;
+  }
+
+.side-drawer-button-link:hover {
+  color: #2c7fbf;
+}
+
+.side-drawer-connect {
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+  display: flex;
+  gap: clamp(0.8rem, 2vw, 1.2rem);
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.side-drawer-connect a {
+  color: #111;
+  transition: color 0.2s;
+}
+
+.side-drawer-connect a:hover {
+  color: #2c7fbf;
+}
+
+.side-drawer-connect svg {
+  width: clamp(1.5rem, 2.5vw, 2rem);
+  height: clamp(1.5rem, 2.5vw, 2rem);
+  fill: currentColor;
+}
